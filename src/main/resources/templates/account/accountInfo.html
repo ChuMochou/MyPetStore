@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/mypetstore.css}" type="text/css" media="screen"/>
+</head>
+<body>
+
+<header th:replace="~{common/top}"></header>
+<div id="Catalog">
+    <table>
+        <tr>Account Information</tr>
+        <tr>
+            <td>Username:</td>
+            <td style="width: 200px" th:text="${session.loginAccount.username}"></td>
+        </tr>
+        <tr>
+            <td>First name:</td>
+            <td style="width: 200px" th:text="${session.loginAccount.firstName}"></td>
+        </tr>
+        <tr>
+            <td>Last name:</td>
+            <td style="width: 200px" th:text="${session.loginAccount.lastName}"></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td style="width: 200px" th:text="${session.loginAccount.email}"></td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td style="width: 200px" th:text="${session.loginAccount.phone}"></td>
+        </tr>
+        <tr>
+            <td>Address 1:</td>
+            <td style="width: 200px" th:text="${session.loginAccount.address1}"></td>
+        </tr>
+        <tr>
+            <td>Address 2:</td>
+            <td style="width: 200px" th:text="${session.loginAccount.address2}"></td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td style="width: 200px" th:text="${session.loginAccount.city}"></td>
+        </tr>
+        <tr>
+            <td>State:</td>
+            <td style="width: 200px" th:text="${session.loginAccount.state}"></td>
+        </tr>
+        <tr>
+            <td>Zip:</td>
+            <td style="width: 200px" th:text="${session.loginAccount.zip}"></td>
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td style="width: 200px" th:text="${session.loginAccount.country}"></td>
+        </tr>
+<!--        <tr>-->
+<!--            <td>Favourite Category:</td>-->
+<!--            <td style="width: 200px" th:text="${session.loginAccount.favouriteCategoryId}"></td>-->
+<!--        </tr>-->
+    </table>
+    <a href="/account/editAccountForm" class="Button">Edit account information</a>
+</div>
+<header th:replace="~{common/bottom}"></header>
+
+</body>
+</html>

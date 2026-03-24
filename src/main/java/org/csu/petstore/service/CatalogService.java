@@ -6,9 +6,9 @@ import org.csu.petstore.Vo.ProductVO;
 
 public interface CatalogService {
 
-    public CategoryVO getCategory(String categoryId);
+    CategoryVO getCategory(String categoryId);
 
-    public ProductVO getProduct(String productId);
+    ProductVO getProduct(String productId);
 
-    public ItemVO getItem(String itemId);
+    ItemVO getItem(String itemId);
 }

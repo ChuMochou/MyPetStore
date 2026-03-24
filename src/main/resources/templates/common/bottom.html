@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="StyleSheet" href="../css/mypetstore.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" th:href="@{/css/mypetstore.css}" type="text/css" media="screen"/>
 </head>
 <body>
 <footer th:fragment="footer">
@@ -17,7 +17,7 @@
             <!-- Banner Name -->
             <label th:if="(${session.account} != null) and (${session.authenticated})">
                 <img th:if="${session.account.bannerOption}"
-                     th:src="${#strings.arraySplit(session.account.bannerName,'&quot;')[1]}">
+                     th:src="${#strings.arraySplit(session.account.bannerName,'&quot;')[1]}" alt="">
             </label>
         </div>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="StyleSheet" href="../css/jpetstore.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" th:href="@{/css/mypetstore.css}" type="text/css" media="screen"/>
 </head>
 <body>
 <header th:replace="~{common/top}"></header>
@@ -29,7 +29,7 @@
                 <td><b th:text="${item.itemId}">Item ID </b></td>
             </tr>
             <tr>
-                <td><b><font size="4" th:text="${item.attributes}"> Item Attributes </font></b></td>
+                <td><b><span th:text="${item.attributes}" style="font-size: medium; "> Item Attributes </span></b></td>
             </tr>
             <tr>
                 <td th:text="${item.productName}">Product Name</td>

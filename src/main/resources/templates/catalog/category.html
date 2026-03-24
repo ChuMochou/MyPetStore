@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="StyleSheet" href="../css/mypetstore.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" th:href="@{/css/mypetstore.css}" type="text/css" media="screen"/>
 </head>
 <body>
 
@@ -24,8 +24,10 @@
             </tr>
 
             <tr th:each="product:${category.productList}">
-                <td><a th:href="@{/catalog/viewProduct?productId=}+${product.productId}" th:text="${product.productId}">Product
-                    ID</a></td>
+                <td>
+                    <a th:href="|/catalog/viewProduct?productId=${product.productId}|"
+                       th:text="${product.productId}">Product ID</a>
+                </td>
                 <td th:text="${product.name}">Product Name</td>
             </tr>
         </table>
