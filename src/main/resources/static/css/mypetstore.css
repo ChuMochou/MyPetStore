@@ -1,0 +1,565 @@
+body {
+    margin: 0ex 10ex 0ex 10ex;
+    padding: 0ex;
+    font-family: helvetica, tahoma, arial, verdana, sans-serif;
+    font-size: 2ex;
+    color: #3b2f2f;
+    background-color: #f6efe7;
+    width: 1340px;
+}
+
+pre {
+    font-family: "Courier New", Courier, mono;
+    font-style: normal;
+    background-color: #fff8f0;
+    white-space: pre;
+    border-radius: 6px;
+    padding: 1ex;
+    color: #5c4033;
+}
+
+h1 {
+    margin: 1ex 0ex 1ex 0ex;
+    padding: 0ex;
+    line-height: 3ex;
+    font-weight: 900;
+    color: #d9733f;
+    border-radius: 6px;
+}
+
+h2 {
+    margin: 2ex 0ex 1ex 0ex;
+    padding: 0ex;
+    line-height: 2ex;
+    font-weight: 700;
+    color: #f2994a;
+    border-radius: 6px;
+}
+
+h3 {
+    margin: 1ex 0ex 1ex 0ex;
+    padding: 0ex;
+    line-height: 1.6ex;
+    font-weight: 700;
+    color: #b85c38;
+    border-radius: 6px;
+}
+
+p {
+    margin: 0ex;
+    padding: 2ex;
+    background-color: #fffdf9;
+    color: #3e2c1b;
+    border-radius: 6px;
+}
+
+img {
+    border: 0;
+    border-radius: 8px;
+}
+
+li {
+    color: #5b4636;
+    list-style-type: none;
+}
+
+table {
+    border-width: 0;
+    empty-cells: show;
+    border-radius: 8px;
+    background-color: #fffaf4;
+}
+
+td, th {
+    empty-cells: show;
+    padding: .3ex .3ex;
+    vertical-align: top;
+    text-align: left;
+    border-width: 0;
+    border-spacing: 0;
+    background-color: #f7eee5;
+    border-radius: 6px;
+}
+
+th {
+    font-weight: bold;
+    background-color: #f2e3d5;
+    color: #2c1e1e;
+    border-radius: 6px;
+}
+
+a, a:visited, a:link {
+    color: #d97706;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #ffb347;
+}
+
+a.Button, a.Button:link, a.Button:visited {
+    padding: .3ex;
+    color: #fff;
+    background-color: #e67e22;
+    text-decoration: none;
+    font-size: 1.5ex;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+a.Button:hover {
+    color: #000;
+    background-color: #ffcc80;
+}
+
+#Logo {
+    width: 33%;
+    height: 9ex;
+    margin: 0ex;
+    padding: 0ex;
+    border-width: 0ex 0ex .3ex 0px;
+    border-style: solid;
+    border-color: #e0c3a0;
+    float: left;
+    background-color: #c96832;
+    color: #fffaf2;
+    line-height: 9ex;
+    border-radius: 8px;
+}
+
+body>#Logo {
+    height: 9ex;
+}
+
+#Menu {
+    width: 33%;
+    height: 9ex;
+    margin: 0ex;
+    padding: 0ex;
+    border-width: 0ex 0ex .3ex 0px;
+    border-style: solid;
+    border-color: #e0c3a0;
+    float: left;
+    background-color: #d18850;
+    color: #fff8dc;
+    text-align: center;
+    line-height: 9ex;
+    border-radius: 8px;
+}
+
+#Menu, #Menu a, #Menu a:link, #Menu a:visited, #Menu a:hover {
+    color: #fff8dc;
+    text-decoration: none;
+}
+
+body>#Menu {
+    height: 9ex;
+}
+
+#Search {
+    width: 33%;
+    height: 9ex;
+    margin: 0ex;
+    padding: 0ex;
+    border-width: 0ex 0ex .3ex 0px;
+    border-style: solid;
+    border-color: #e0c3a0;
+    float: left;
+    text-align: center;
+    background-color: #e1a45f;
+    color: #fffbe6;
+    line-height: 9ex;
+    border-radius: 8px;
+}
+
+body>#Search {
+    height: 9ex;
+}
+
+#Search input {
+    border-width: .1ex;
+    border-style: solid;
+    border-color: #c79a6d;
+    background-color: #fdf1e3;
+    color: #9c6732;
+    border-radius: 5px;
+    padding: 0.5ex;
+}
+
+#QuickLinks {
+    text-align: center;
+    background-color: #fffdf9;
+    width: 99%;
+    border-radius: 6px;
+}
+
+#PoweredBy {
+    width: 30%;
+    height: 9ex;
+    margin: 0ex;
+    padding: 0ex;
+    border-width: .3ex 0ex .3ex 0px;
+    border-style: solid;
+    border-color: #e0c3a0;
+    float: left;
+    background-color: #c96832;
+    color: #fffaf2;
+    line-height: 9ex;
+    border-radius: 8px;
+}
+
+body>#PoweredBy {
+    height: 9ex;
+}
+
+#Banner {
+    width: 69%;
+    height: 9ex;
+    margin: 0ex;
+    padding: 0ex;
+    border-width: .3ex 0ex .3ex 0px;
+    border-style: solid;
+    border-color: #e0c3a0;
+    float: left;
+    background-color: #e88f47;
+    color: #fffdf5;
+    line-height: 9ex;
+    border-radius: 8px;
+}
+
+body>#Banner {
+    height: 9ex;
+}
+
+#Content {
+    margin: 0;
+    padding: 0ex;
+    width: 99%;
+    color: #3c2f2f;
+    background-color: #fffdf9;
+    border-radius: 8px;
+}
+
+#Separator {
+    clear: both;
+    margin: 0;
+    height: 0;
+}
+
+#Main {
+    margin: 0;
+    padding: 1ex;
+    color: #3c2f2f;
+    background-color: #fffaf5;
+    border-color: #fff5eb;
+    border-radius: 8px;
+}
+
+#Sidebar {
+    float: left;
+    background: #fdf2e6;
+    width: 30%;
+    border-radius: 8px;
+}
+
+#RightSidebar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#MainImage {
+    float: left;
+    background: inherit;
+    text-align: center;
+    width: 50%;
+    border-radius: 8px;
+}
+
+#Catalog {
+    padding: 1ex;
+    background: #fff7ec;
+    text-align: center;
+    border-radius: 8px;
+}
+
+#Catalog table tr th {
+    text-align: center;
+}
+
+#Catalog input[type="submit"] {
+    padding: .3ex;
+    color: #fff;
+    background-color: #e67e22;
+    text-decoration: none;
+    font-size: 1.5ex;
+    border-width: 0;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+#Catalog input[type="submit"]:hover {
+    color: #000;
+    background-color: #f6c78b;
+    cursor: pointer;
+}
+
+#Catalog table {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+}
+
+#BackLink {
+    padding: 1ex;
+    float: right;
+    border-width: .1ex 0ex .1ex 0px;
+    border-style: solid;
+    border-color: #b57a4b;
+    border-radius: 6px;
+    background-color: #f0b67f;
+    color: #3b1f0f;
+}
+
+#Cart {
+    width: 69.99%;
+    float: left;
+    background-color: #fffaf4;
+    border-radius: 8px;
+}
+
+#MyList {
+    width: 30%;
+    float: left;
+    background-color: #f9efe3;
+    text-align: left;
+    border-radius: 8px;
+}
+
+#SearchAutoComplete {
+    background-color: #fffdf9;
+    position: relative;
+    top: -28px;
+    left: 128px;
+    width: 200px;
+    display: none;
+}
+
+#SearchAutoCompleteUl {
+    margin: 0;
+    padding: 0;
+    border: 1px solid #aaa;
+}
+
+#SearchAutoCompleteUl .SearchAutoCompleteLi {
+    height: 27px;
+    line-height: 27px;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 5px;
+    border-bottom: 1px solid #ccc;
+    color: #e67e22;
+    cursor: pointer;
+}
+
+.hoverwindow {
+    position: absolute;
+    background-color: #fffaf4;
+    border: 1px solid #e0c3a0;
+    padding: 1ex;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    max-width: 300px;
+    border-radius: 8px;
+}
+
+.hoverwindow h3 {
+    margin: 0ex 0ex 1ex 0ex;
+    padding: 0ex;
+    color: #d9733f;
+}
+
+.hoverwindow p {
+    margin: 0ex 0ex 1ex 0ex;
+    padding: 0ex;
+    background-color: transparent;
+}
+
+.hoverwindow h4 {
+    margin: 1ex 0ex 0.5ex 0ex;
+    padding: 0ex;
+    color: #b85c38;
+    font-size: 1.5ex;
+}
+
+.hoverwindow ul {
+    margin: 0ex 0ex 0ex 2ex;
+    padding: 0ex;
+}
+
+.hoverwindow li {
+    margin: 0ex;
+    padding: 0.2ex 0ex;
+    color: #3e2c1b;
+}
+
+/* 可编辑表格样式 */
+table.editable-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(214, 138, 89, 0.1);
+    background-color: #fffaf4;
+    margin: 1ex 0;
+}
+
+table.editable-table td,
+table.editable-table th {
+    padding: 1ex 1.5ex;
+    border: 1px solid #f2e3d5;
+    vertical-align: middle;
+    transition: background-color 0.3s ease;
+}
+
+table.editable-table th {
+    background-color: #f2e3d5;
+    color: #2c1e1e;
+    font-weight: bold;
+    width: 30%;
+    text-align: right;
+    padding-right: 2ex;
+}
+
+table.editable-table td {
+    background-color: #f7eee5;
+    position: relative;
+}
+
+.editPart {
+    cursor: pointer;
+    min-height: 2.5ex;
+    padding: 0.5ex 0;
+    transition: all 0.3s ease;
+    position: relative;
+    display: block;
+}
+
+.editPart:hover {
+    background-color: #f9e4cf;
+    border-radius: 4px;
+    padding-left: 0.5ex;
+}
+
+.editPart:hover .displayText {
+    color: #d9733f;
+}
+
+.editPart.editing {
+    background-color: #fff8f0;
+    border: 2px solid #e67e22;
+    border-radius: 6px;
+    padding: 0.5ex;
+    box-shadow: 0 0 10px rgba(230, 126, 34, 0.2);
+}
+
+.displayText {
+    display: inline-block;
+    min-width: 200px;
+    color: #5c4033;
+    font-weight: 500;
+    padding: 0.3ex 0.5ex;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.editInput {
+    width: 100%;
+    min-width: 250px;
+    padding: 0.8ex 1ex;
+    border: 2px solid #f2994a;
+    border-radius: 5px;
+    font-size: 1.8ex;
+    font-family: inherit;
+    color: #5c4033;
+    background-color: #fffdf9;
+    box-shadow: inset 0 2px 4px rgba(242, 153, 74, 0.1);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.editInput:focus {
+    outline: none;
+    border-color: #d9733f;
+    box-shadow: 0 0 0 3px rgba(217, 115, 63, 0.2),
+    inset 0 2px 4px rgba(217, 115, 63, 0.1);
+}
+
+.editControls {
+    margin-top: 0.8ex;
+    display: flex;
+    gap: 1ex;
+}
+
+.saveBtn, .cancelBtn {
+    padding: 0.5ex 1.5ex;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.6ex;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 60px;
+    text-align: center;
+}
+
+.saveBtn {
+    background: linear-gradient(135deg, #e67e22, #d97706);
+    color: white;
+    box-shadow: 0 2px 4px rgba(230, 126, 34, 0.3);
+}
+
+.saveBtn:hover {
+    background: linear-gradient(135deg, #f2994a, #e67e22);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(242, 153, 74, 0.4);
+}
+
+.saveBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(230, 126, 34, 0.3);
+}
+
+.saveBtn:disabled {
+    background: #e0c3a0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.cancelBtn {
+    background: linear-gradient(135deg, #b85c38, #a3472c);
+    color: white;
+    box-shadow: 0 2px 4px rgba(184, 92, 56, 0.3);
+}
+
+.cancelBtn:hover {
+    background: linear-gradient(135deg, #d9733f, #b85c38);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(217, 115, 63, 0.4);
+}
+
+.cancelBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(184, 92, 56, 0.3);
+}
+
+.editPart.unsaved .displayText {
+    background-color: #fff3cd;
+    color: #856404;
+    border-left: 3px solid #ffc107;
+    padding-left: 1ex;
+}
