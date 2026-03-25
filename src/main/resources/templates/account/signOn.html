@@ -10,13 +10,14 @@
 <header th:replace="~{common/top}"></header>
 <div id="Catalog">
   <form th:action="@{/account/signOn}" method="post">
-    <p>Please enter your username and password.</p>
+    <div>Please enter your username and password.</div>
 
     <div th:if="${signOnMsg != null}" style="color: red;">
       <span th:text="${signOnMsg}"></span>
     </div>
 
     <table>
+
       <tr>
         <td>Username:</td>
         <td><input type="text" name="username" /></td>

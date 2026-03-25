@@ -14,10 +14,9 @@
         </div>
 
         <div id="Banner">
-            <!-- Banner Name -->
-            <label th:if="(${session.account} != null) and (${session.authenticated})">
-                <img th:if="${session.account.bannerOption}"
-                     th:src="${#strings.arraySplit(session.account.bannerName,'&quot;')[1]}" alt="">
+            <label th:if="${session.loginAccountProfile} != null">
+                <img th:if="${session.loginAccountProfile.bannerOption}"
+                     th:src="'../images/banner_'+${#strings.toLowerCase(session.loginAccountProfile.favoriteCategory)}+'.gif'" alt="">
             </label>
         </div>
 

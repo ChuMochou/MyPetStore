@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/mypetstore.css}" type="text/css" media="screen"/>
+</head>
+<body>
+
+<header th:replace="~{common/top}"></header>
+<div id="Catalog">
+    <form th:action="@{/account/editAccount}" method="post">
+        <h3>User Information</h3>
+
+        <h3>Account Information</h3>
+        <table>
+            <tr>
+                <td>First name:</td>
+                <td><input size="40" name="firstName" placeholder="optional"
+                           th:value="${session.loginAccount.firstName}" /></td>
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td><input size="40" name="lastName" placeholder="optional"
+                           th:value="${session.loginAccount.lastName}" /></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input size="40" name="email" placeholder="optional"
+                           th:value="${session.loginAccount.email}" /></td>
+            </tr>
+            <tr>
+                <td>Phone:</td>
+                <td><input size="40" name="phone" placeholder="optional"
+                           th:value="${session.loginAccount.phone}" /></td>
+            </tr>
+            <tr>
+                <td>Address 1:</td>
+                <td><input size="40" name="address1" placeholder="optional"
+                           th:value="${session.loginAccount.address1}" /></td>
+            </tr>
+            <tr>
+                <td>Address 2:</td>
+                <td><input size="40" name="address2" placeholder="optional"
+                           th:value="${session.loginAccount.address2}" /></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td><input size="40" name="city" placeholder="optional"
+                           th:value="${session.loginAccount.city}" /></td>
+            </tr>
+            <tr>
+                <td>State:</td>
+                <td><input size="40" name="state" placeholder="optional"
+                           th:value="${session.loginAccount.state}" /></td>
+            </tr>
+            <tr>
+                <td>Zip:</td>
+                <td><input size="40" name="zip" placeholder="optional"
+                           th:value="${session.loginAccount.zip}" /></td>
+            </tr>
+            <tr>
+                <td>Country:</td>
+                <td><input size="40" name="country" placeholder="optional"
+                           th:value="${session.loginAccount.country}" /></td>
+            </tr>
+        </table>
+
+        <h3>Profile Information</h3>
+        <table>
+            <tr>
+                <td>Language Preference:</td>
+                <td>
+                    <select name="languagePreference">
+                        <option th:each="lang : ${session.languages}"
+                                th:value="${lang}"
+                                th:text="${lang}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Favourite Category:</td>
+                <td>
+                    <select name="favouriteCategoryId">
+                        <option th:each="category : ${session.categories}"
+                                th:value="${category}"
+                                th:text="${category}"></option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <input type="submit" name="editAccount" value="Save Account Information" />
+    </form>
+</div>
+<header th:replace="~{common/bottom}"></header>
+
+</body>
+</html>

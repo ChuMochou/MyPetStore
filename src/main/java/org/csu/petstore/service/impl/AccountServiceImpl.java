@@ -1,6 +1,7 @@
 package org.csu.petstore.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import jakarta.servlet.http.HttpSession;
 import org.csu.petstore.entity.Account;
 import org.csu.petstore.entity.Profile;
 import org.csu.petstore.entity.SignOnInfo;
@@ -24,6 +25,13 @@ public class AccountServiceImpl implements AccountService {
     private SignOnInfoMapper signOnInfoMapper;
     @Autowired
     private ProfileMapper profileMapper;
+    @Autowired
+    private HttpSession session;
+
+    @Override
+    public Account getAccountByUsername(String username) {
+        return accountMapper.selectById(username);
+    }
 
     @Override
     public Account getAccountBySignOnInfo(String username, String password) {
@@ -33,7 +41,7 @@ public class AccountServiceImpl implements AccountService {
         queryWrapper.eq("password",password);
         SignOnInfo signOnInfo=signOnInfoMapper.selectOne(queryWrapper);
         if(signOnInfo!=null) {
-            account.setUsername(signOnInfo.getUsername());
+            account=getAccountByUsername(username);
         }
         return account;
     }
@@ -78,7 +86,7 @@ public class AccountServiceImpl implements AccountService {
         account.setEmail("");
         account.setFirstName("");
         account.setLastName("");
-        account.setStatus("");
+        account.setStatus("OK");
         account.setAddress1("");
         account.setAddress2("");
         account.setCity("");
@@ -94,5 +102,33 @@ public class AccountServiceImpl implements AccountService {
         profile.setMyListOption(1);
         profile.setBannerOption(1);
         profileMapper.insert(profile);//插入用户喜好表
+    }
+
+    @Override
+    public void editAccount(String firstName,String lastName,String email,String phone,
+                            String address1,String address2,String city,String state,
+                            String zip,String country,String languagePreference,String favouriteCategoryId) {
+        Account account=(Account)session.getAttribute("loginAccount");
+        account.setFirstName(firstName);
+        account.setLastName(lastName);
+        account.setEmail(email);
+        account.setPhone(phone);
+        account.setAddress1(address1);
+        account.setAddress2(address2);
+        account.setCity(city);
+        account.setState(state);
+        account.setZip(zip);
+        account.setCountry(country);
+        account.setStatus("OK");
+        accountMapper.updateById(account);
+        Profile profile=new Profile();
+        profile.setUsername(account.getUsername());
+        profile.setLanguagePrefer(languagePreference);
+        profile.setFavoriteCategory(favouriteCategoryId);
+        profile.setMyListOption(1);
+        profile.setBannerOption(1);
+        profileMapper.updateById(profile);
+        session.setAttribute("loginAccount",account);
+        session.setAttribute("loginAccountProfile",profileMapper.selectById(account.getUsername()));
     }
 }
