@@ -33,7 +33,11 @@ public class AccountController {
     }
 
     @PostMapping("/signOn")
-    public String signOn(String username, String password, Model model) {
+    public String signOn(String username, String password,String inputCaptcha, Model model) {
+        if(!(session.getAttribute("trueCaptcha")).toString().equalsIgnoreCase(inputCaptcha)) {
+            model.addAttribute("signOnMsg","Captcha error!");
+            return "account/signOn";
+        }
         if(accountService.checkUsernameAvailable(username)) {
             model.addAttribute("signOnMsg","Username is not exists!");
             return "account/signOn";
@@ -60,7 +64,11 @@ public class AccountController {
     }
 
     @PostMapping("/newAccount")
-    public String newAccount(String username,String password,String repeatedPassword,Model model) {
+    public String newAccount(String username,String password,String inputCaptcha,String repeatedPassword,Model model) {
+        if(!(session.getAttribute("trueCaptcha")).toString().equalsIgnoreCase(inputCaptcha)) {
+            model.addAttribute("newAccountMsg","Captcha error!");
+            return "account/newAccount";
+        }
         if(!accountService.checkNewAccount(username,password,repeatedPassword,model)) {
             return "account/newAccount";
         }

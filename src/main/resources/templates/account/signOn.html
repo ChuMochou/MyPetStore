@@ -26,15 +26,13 @@
         <td>password:</td>
         <td><input type="password" name="password" /></td>
       </tr>
-<!--      <tr>-->
-        <!-- 验证码图片 Thymeleaf 路径 + 点击刷新 -->
-<!--        <td>-->
-<!--          <img th:src="@{/newCaptcha}"-->
-<!--               onclick="this.src='/newCaptcha?'+Math.random()"-->
-<!--               style="cursor:pointer;">-->
-<!--        </td>-->
-<!--        <td><input type="text" name="inputCaptcha"></td>-->
-<!--      </tr>-->
+      <tr>
+        <td>
+          <img th:src="@{/captcha/newCaptcha}" alt="验证码"
+               onclick="src='/captcha/newCaptcha?'+Math.random()" style="cursor: pointer">
+        </td>
+        <td><input type="text" name="inputCaptcha"></td>
+      </tr>
     </table>
 
     <input type="submit" name="signOn" value="Login">

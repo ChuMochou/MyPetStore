@@ -55,10 +55,10 @@
             <td>Country:</td>
             <td style="width: 200px" th:text="${session.loginAccount.country}"></td>
         </tr>
-<!--        <tr>-->
-<!--            <td>Favourite Category:</td>-->
-<!--            <td style="width: 200px" th:text="${session.loginAccount.favouriteCategoryId}"></td>-->
-<!--        </tr>-->
+        <tr>
+            <td>Favourite Category:</td>
+            <td style="width: 200px" th:text="${session.loginAccountProfile.favoriteCategory}"></td>
+        </tr>
     </table>
     <a href="/account/editAccountForm" class="Button">Edit account information</a>
 </div>

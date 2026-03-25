@@ -34,18 +34,13 @@
             <tr>
                 <td><div id="repeat_feedback"></div></td>
             </tr>
-<!--            <tr>-->
-<!--                <td><img src="newCaptcha" onclick="this.src='newCaptcha?'+Math.random()" style="cursor:pointer;"></td>-->
-<!--                <td><input type="text" name="inputCaptcha"></td>-->
-<!--            </tr>       验证码-->
-<!--            <tr>-->
-<!--                <td>Favourite Category:</td>-->
-<!--                <td><select name="account.favouriteCategoryId">-->
-<!--                    <c:forEach var="lang" items="${sessionScope.categories}">-->
-<!--                        <option value="${lang}">${lang}</option>-->
-<!--                    </c:forEach>-->
-<!--                </select></td>-->
-<!--            </tr>       喜好动物-->
+            <tr>
+                <td>
+                    <img th:src="@{/captcha/newCaptcha}" alt="验证码"
+                         onclick="src='/captcha/newCaptcha?'+Math.random()" style="cursor: pointer">
+                </td>
+                <td><input type="text" name="inputCaptcha"></td>
+            </tr>
         </table>
         <input type="submit" name="newAccount" value="Register" />
     </form>
