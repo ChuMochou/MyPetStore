@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/mypetstore.css}" type="text/css" media="screen"/>
+</head>
+<body>
+
+<header th:replace="~{common/top}"></header>
+<div>
+    <h2>
+        Registration successful,please proceed to
+        <a th:href="@{/account/signOnForm}" class="Button">login.</a>
+    </h2>
+</div>
+<header th:replace="~{common/bottom}"></header>
+
+</body>
+</html>

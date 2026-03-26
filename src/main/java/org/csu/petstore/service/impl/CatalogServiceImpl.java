@@ -33,11 +33,13 @@ public class CatalogServiceImpl implements CatalogService {
     @Override
     public CategoryVO getCategory(String categoryId) {
         CategoryVO categoryVO=new CategoryVO();
-        Category category=categoryMapper.selectById(categoryId);
+        QueryWrapper<Category> categoryQueryWrapper=new QueryWrapper<>();
+        categoryQueryWrapper.eq("catid",categoryId);
+        Category category=categoryMapper.selectOne(categoryQueryWrapper);
 
-        QueryWrapper<Product> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("category",categoryId);
-        List<Product> productList=productMapper.selectList(queryWrapper);
+        QueryWrapper<Product> productQueryWrapper=new QueryWrapper<>();
+        productQueryWrapper.eq("category",categoryId);
+        List<Product> productList=productMapper.selectList(productQueryWrapper);
 
         categoryVO.setCategoryId(categoryId);
         categoryVO.setCategoryName(category.getName());
@@ -48,11 +50,13 @@ public class CatalogServiceImpl implements CatalogService {
     @Override
     public ProductVO getProduct(String productId) {
         ProductVO productVO=new ProductVO();
-        Product product=productMapper.selectById(productId);
+        QueryWrapper<Product> productQueryWrapper=new QueryWrapper<>();
+        productQueryWrapper.eq("productid",productId);
+        Product product=productMapper.selectOne(productQueryWrapper);
 
-        QueryWrapper<Item> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("productid",productId);
-        List<Item> itemList=itemMapper.selectList(queryWrapper);
+        QueryWrapper<Item> itemQueryWrapper=new QueryWrapper<>();
+        itemQueryWrapper.eq("productid",productId);
+        List<Item> itemList=itemMapper.selectList(itemQueryWrapper);
 
         productVO.setProductId(productId);
         productVO.setCategoryId(product.getCategoryId());
@@ -64,9 +68,17 @@ public class CatalogServiceImpl implements CatalogService {
     @Override
     public ItemVO getItem(String itemId) {
         ItemVO itemVO=new ItemVO();
-        Item item=itemMapper.selectById(itemId);
-        Product product=productMapper.selectById(item.getProductId());
-        ItemQuantity itemQuantity=itemQuantityMapper.selectById(itemId);
+        QueryWrapper<Item> itemQueryWrapper=new QueryWrapper<>();
+        itemQueryWrapper.eq("itemid",itemId);
+        Item item=itemMapper.selectOne(itemQueryWrapper);
+
+        QueryWrapper<Product> productQueryWrapper=new QueryWrapper<>();
+        productQueryWrapper.eq("productid",item.getProductId());
+        Product product=productMapper.selectOne(productQueryWrapper);
+
+        QueryWrapper<ItemQuantity> itemQuantityQueryWrapper=new QueryWrapper<>();
+        itemQuantityQueryWrapper.eq("itemid",itemId);
+        ItemQuantity itemQuantity=itemQuantityMapper.selectOne(itemQuantityQueryWrapper);
 
         itemVO.setItemId(itemId);
         itemVO.setListPrice(item.getListPrice());

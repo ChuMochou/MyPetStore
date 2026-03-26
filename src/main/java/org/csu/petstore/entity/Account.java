@@ -1,5 +1,6 @@
 package org.csu.petstore.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -8,7 +9,10 @@ import lombok.Data;
 @Data
 @TableName("account")
 public class Account {
-    @TableId("userid")
+    //account
+    @TableId(value = "id",type = IdType.AUTO)
+    private Integer id;
+    @TableField("userid")
     private String username;
     private String email;
     @TableField("firstname")
@@ -25,4 +29,21 @@ public class Account {
     private String zip;
     private String country;
     private String phone;
+    //profile
+    @TableField("langpref")
+    private String languagePrefer;
+    @TableField("favcategory")
+    private String favoriteCategory;
+    @TableField("mylistopt")
+    private int myListOption;
+    @TableField("banneropt")
+    private int bannerOption;
+    //signOn
+    private String password;
+
+    @TableField("create_time")
+    private String createTime;
+    @TableField("update_time")
+    private String updateTime;
+    private int deleted;
 }

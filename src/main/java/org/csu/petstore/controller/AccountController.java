@@ -2,10 +2,6 @@ package org.csu.petstore.controller;
 
 import jakarta.servlet.http.HttpSession;
 import org.csu.petstore.entity.Account;
-import org.csu.petstore.entity.Profile;
-import org.csu.petstore.entity.SignOnInfo;
-import org.csu.petstore.persistence.AccountMapper;
-import org.csu.petstore.persistence.ProfileMapper;
 import org.csu.petstore.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +20,6 @@ public class AccountController {
     private AccountService accountService;
     @Autowired
     private HttpSession session;
-    @Autowired
-    private ProfileMapper profileMapper;
 
     @GetMapping("/signOnForm")
     public String signOnForm() {
@@ -42,13 +36,12 @@ public class AccountController {
             model.addAttribute("signOnMsg","Username is not exists!");
             return "account/signOn";
         }
-        Account account=accountService.getAccountBySignOnInfo(username,password);
-        if(account.getUsername()==null) {
+        Account account=accountService.getAccountByUsernameAndPassword(username,password);
+        if(account==null) {
             model.addAttribute("signOnMsg","Password error!");
             return "account/signOn";
         }
         session.setAttribute("loginAccount",account);
-        session.setAttribute("loginAccountProfile",profileMapper.selectById(username));
         return "catalog/main";
     }
 
@@ -73,7 +66,12 @@ public class AccountController {
             return "account/newAccount";
         }
         accountService.insertNewAccount(username,password);
-        return "account/signOn";
+        return "account/registerSuccess";
+    }
+
+    @GetMapping("/registerSuccessForm")
+    public String registerSuccessForm() {
+        return "account/registerSuccess";
     }
 
     @GetMapping("/viewAccount")

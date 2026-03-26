@@ -3,11 +3,7 @@ package org.csu.petstore.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import jakarta.servlet.http.HttpSession;
 import org.csu.petstore.entity.Account;
-import org.csu.petstore.entity.Profile;
-import org.csu.petstore.entity.SignOnInfo;
 import org.csu.petstore.persistence.AccountMapper;
-import org.csu.petstore.persistence.ProfileMapper;
-import org.csu.petstore.persistence.SignOnInfoMapper;
 import org.csu.petstore.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,36 +18,29 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountMapper accountMapper;
     @Autowired
-    private SignOnInfoMapper signOnInfoMapper;
-    @Autowired
-    private ProfileMapper profileMapper;
-    @Autowired
     private HttpSession session;
 
     @Override
     public Account getAccountByUsername(String username) {
-        return accountMapper.selectById(username);
+        QueryWrapper<Account> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("userid",username);
+        return accountMapper.selectOne(queryWrapper);
     }
 
     @Override
-    public Account getAccountBySignOnInfo(String username, String password) {
-        Account account=new Account();
-        QueryWrapper<SignOnInfo> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("username",username);
+    public Account getAccountByUsernameAndPassword(String username, String password) {
+        QueryWrapper<Account> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("userid",username);
         queryWrapper.eq("password",password);
-        SignOnInfo signOnInfo=signOnInfoMapper.selectOne(queryWrapper);
-        if(signOnInfo!=null) {
-            account=getAccountByUsername(username);
-        }
-        return account;
+        return accountMapper.selectOne(queryWrapper);
     }
 
     @Override
     public boolean checkUsernameAvailable(String username) {
-        QueryWrapper<SignOnInfo> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("username",username);
-        SignOnInfo signOnInfo=signOnInfoMapper.selectOne(queryWrapper);
-        return signOnInfo == null;
+        QueryWrapper<Account> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("userid",username);
+        Account account=accountMapper.selectOne(queryWrapper);
+        return account == null;
     }
 
     @Override
@@ -77,10 +66,6 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public void insertNewAccount(String username, String password) {
-        SignOnInfo signOnInfo=new SignOnInfo();
-        signOnInfo.setUsername(username);
-        signOnInfo.setPassword(password);
-        signOnInfoMapper.insert(signOnInfo);//插入登录信息表
         Account account=new Account();
         account.setUsername(username);
         account.setEmail("");
@@ -94,14 +79,12 @@ public class AccountServiceImpl implements AccountService {
         account.setZip("");
         account.setCountry("");
         account.setPhone("");
-        accountMapper.insert(account);//插入用户信息表
-        Profile profile=new Profile();
-        profile.setUsername(username);
-        profile.setLanguagePrefer("Chinese");
-        profile.setFavoriteCategory("CATS");
-        profile.setMyListOption(1);
-        profile.setBannerOption(1);
-        profileMapper.insert(profile);//插入用户喜好表
+        account.setLanguagePrefer("Chinese");
+        account.setFavoriteCategory("CATS");
+        account.setMyListOption(1);
+        account.setBannerOption(1);
+        account.setPassword(password);
+        accountMapper.insert(account);
     }
 
     @Override
@@ -120,15 +103,11 @@ public class AccountServiceImpl implements AccountService {
         account.setZip(zip);
         account.setCountry(country);
         account.setStatus("OK");
-        accountMapper.updateById(account);
-        Profile profile=new Profile();
-        profile.setUsername(account.getUsername());
-        profile.setLanguagePrefer(languagePreference);
-        profile.setFavoriteCategory(favouriteCategoryId);
-        profile.setMyListOption(1);
-        profile.setBannerOption(1);
-        profileMapper.updateById(profile);
+        account.setLanguagePrefer(languagePreference);
+        account.setFavoriteCategory(favouriteCategoryId);
+        account.setMyListOption(1);
+        account.setBannerOption(1);
         session.setAttribute("loginAccount",account);
-        session.setAttribute("loginAccountProfile",profileMapper.selectById(account.getUsername()));
+        accountMapper.updateById(account);
     }
 }

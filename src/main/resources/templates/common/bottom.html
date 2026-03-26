@@ -14,9 +14,9 @@
         </div>
 
         <div id="Banner">
-            <label th:if="${session.loginAccountProfile} != null">
-                <img th:if="${session.loginAccountProfile.bannerOption}"
-                     th:src="'../images/banner_'+${#strings.toLowerCase(session.loginAccountProfile.favoriteCategory)}+'.gif'" alt="">
+            <label th:if="${session.loginAccount} != null">
+                <img th:if="${session.loginAccount.bannerOption}"
+                     th:src="'../images/banner_'+${#strings.toLowerCase(session.loginAccount.favoriteCategory)}+'.gif'" alt="">
             </label>
         </div>
 
